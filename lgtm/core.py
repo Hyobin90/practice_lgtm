@@ -7,7 +7,7 @@ import click
 @click.argument('keyword')
 def cli(keyword: str, message: str):
     """LGTM image generating tool."""
-    lgtm()
+    lgtm(keyword, message)
     click.echo('lgtm') # for testing
 
 def lgtm():
