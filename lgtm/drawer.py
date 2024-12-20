@@ -9,7 +9,7 @@ MAX_RATIO = 0.8
 # Constants for fonts
 FONT_MAX_SIZE = 256
 FONT_MIN_SIZE = 24
-FONT_NAME = os.path.abspath('C:\Windows\Fonts\Arial.ttf')
+FONT_NAME = ImageFont.load_default()
 FONT_COLOR_WHITE = (255, 255, 255, 0)
 
 # constants for output
@@ -25,19 +25,18 @@ def save_with_message(fp, message):
     image_width, image_height = image.size
     message_area_width = image_width * MAX_RATIO
     message_area_height = image_height * MAX_RATIO
-
     # Get the proper font size by decrementing by 1
     for font_size in range(FONT_MAX_SIZE, FONT_MIN_SIZE, -1):
-        font = ImageFont.truetype(FONT_NAME, font_size)
+        #font = ImageFont.truetype(FONT_NAME, font_size)
 
-        text_width, text_height = draw.textsize(message, font=font)
+        text_width, text_height = draw.textsize(message, font=FONT_NAME)
         w = message_area_width - text_width
         h = message_area_height - text_height
 
         if w > 0 and h > 0:
             position = ((image_width - text_width) / 2,
                         (image_height - text_height) / 2)
-            draw.text(position, message, fill=FONT_COLOR_WHITE, font=font)
+            draw.text(position, message, fill=FONT_COLOR_WHITE, font=FONT_NAME)
             break
     
     # save the image

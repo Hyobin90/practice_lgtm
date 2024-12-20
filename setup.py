@@ -1,12 +1,11 @@
 from setuptools import find_packages, setup
 
-
 setup(
     name='lgtm',
     version='1.0.0',
-    pacakges=find_packages(exclude=('tests',)),
+    packages=find_packages(exclude=('tests',)),
     package_data={'lgtm': ['data/*']},
-    install_require=[
+    install_requires=[
         'Click~=7.0',
         'Pillow~=6.2.0',
         'requests~=2.22.0',
@@ -15,5 +14,5 @@ setup(
         'console_scripts': [
             'lgtm=lgtm.core:cli'
         ]
-    }
+    },
 )
